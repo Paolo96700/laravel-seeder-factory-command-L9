@@ -10,7 +10,7 @@
 </head>
 <body>
     <header>
-        <h1>header</h1>
+        @include('components.navbar')
     </header>
     <main>
         @yield('contents')
