@@ -1,20 +1,21 @@
 @extends('layouts.base')
 @section('contents')
-    <div class="card" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
-    @foreach ($products as $product)
-        <ul>
-            <li>{{$product->name}}</li>
-            {{$product->category->name}}
-            {{$product->category->color}}
-        </ul>
-        
-    @endforeach
-   
+   <div class="container d-flex flex-wrap justify-content-center py-4">
+        @foreach ($products as $product)
+            <div class="card m-1" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">{{$product->name}}</h5>
+                    <p class="card-text"><span class="fw-bold">Color: </span>{{$product->category->name}}</p>
+                    {{-- <p class="card-text">{{$product->category->color}}</p> --}}
+                <div style="height: 11rem;">
+                    <p class="card-text">{{$product->description}}</p>
+                </div>
+                    <h4 class="card-text">{{$product->price}}.00$</h4>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <a href="{{ route('products.show', ['product' => $product]) }}" class="btn btn-primary m-3 w-100">View</a>
+                </div>
+            </div>  
+        @endforeach
+   </div>
 @endsection
